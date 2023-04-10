@@ -3,7 +3,6 @@ const userModel = require("../user/user-model");
 const bcryptjs = require("bcryptjs");
 const utils = require("../../secrets/utils");
 
-const { request } = require("express");
 const {
   registerValidatePayload,
   loginValidatePayload,
@@ -24,5 +23,26 @@ router.post("/register", registerValidatePayload, async (req, res, next) => {
     next(error);
   }
 });
+
+router.post(
+  "/login",
+  loginValidatePayload,
+  usernameCheck,
+  passwordCheck,
+  async (req, res, next) => {
+    try {
+      const payload = {
+        username: req.body.username,
+        rolename: req.user.rolename,
+      };
+      const token = utils.createUserToken(payload, "1d");
+      res.json({ message: `welcome ${payload.username}`, token: token });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.post("/");
 
 module.exports = router;

@@ -10,7 +10,7 @@ async function getById(user_id) {
 async function getByFilter(filter) {
   return await db("users as u")
     .leftJoin("roles as r", "r.role_id", "u.role_id")
-    .select("u.user_id", "u.username", "r.rolename")
+    .select("u.*", "r.rolename")
     .where(filter)
     .first();
 }
@@ -43,4 +43,5 @@ module.exports = {
   create,
   updateUser,
   deleteUser,
+  getById,
 };
