@@ -21,13 +21,17 @@ router.put(
   userPayloadKontrol,
   async (req, res, next) => {
     try {
-      let updatedUser = await userModel.updateUser(req.params.id, {
-        username: req.body.username,
-        email: req.body.email,
-        password: bcryptjs.hashSync(req.body.password, 8),
-        role_id: req.body.role_id,
-      });
-      res.json(updatedUser);
+      if (req.decodeToken.user_id == req.params.id) {
+        let updatedUser = await userModel.updateUser(req.params.id, {
+          username: req.body.username,
+          email: req.body.email,
+          password: bcryptjs.hashSync(req.body.password, 8),
+          role_id: req.body.role_id,
+        });
+        res.json(updatedUser);
+      } else {
+        res.json({ message: "Bu yetkiye sahip değilsiniz" });
+      }
     } catch (error) {
       next(error);
     }
@@ -42,10 +46,14 @@ router.delete(
   loginValidatePayload,
   async (req, res, next) => {
     try {
-      await userModel.deleteUser(req.params.id);
-      res.json({
-        message: `${req.params.id}'li kullanıcı başarılı birşekilde silindi`,
-      });
+      if (req.decodeToken.user_id == req.params.id) {
+        await userModel.deleteUser(req.params.id);
+        res.json({
+          message: `${req.params.id} id'li kullanıcı başarılı birşekilde silindi`,
+        });
+      } else {
+        res.json({ message: "bu yetkiye sahip değilsiniz" });
+      }
     } catch (error) {
       next(error);
     }

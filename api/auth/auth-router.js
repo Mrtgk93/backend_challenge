@@ -34,6 +34,7 @@ router.post(
       const payload = {
         username: req.body.username,
         rolename: req.user.rolename,
+        user_id: req.user.user_id,
       };
       const token = utils.createUserToken(payload, "1d");
       res.json({ message: `welcome ${payload.username}`, token: token });
