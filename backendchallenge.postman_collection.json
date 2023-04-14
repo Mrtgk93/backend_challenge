@@ -1,451 +1,373 @@
 {
-	"info": {
-		"_postman_id": "92caf8d0-3a18-4c8d-9d47-53ea0857b8a3",
-		"name": "backendchallenge",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25705028"
-	},
-	"item": [
-		{
-			"name": "register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"username\":\"mert1233\",\n    \"password\":\"12345\",\n    \"email\":\"mrt123@gmail.com\",\n    \"rolename\":\"user\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/auth/register",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"auth",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"username\":\"Lionel Messi\",\n    \"password\":\"1234\"\n   \n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/auth/login",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"auth",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get users",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxMzk2NTU3LCJleHAiOjE2ODE0ODI5NTd9.G03gRsuioxZI8ed5UVIqZOcRV4V_PCrx8TG95CUHHDc",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:9001/api/user",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "put user",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1ODU2LCJleHAiOjE2ODE1NjIyNTZ9.PDfZdTU-JBWi83J_QUWhsMceu9rmCt5KA25VjehehfI",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n      \"username\": \"nusr_et\",\n      \"password\": \"12345\",\n      \"email\": \"nusret@gokce.com\",\n    \"role_id\":2\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/user/4",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"user",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete user",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lcnQxMjMzIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NSwiaWF0IjoxNjgxNDEyMDUyLCJleHAiOjE2ODE0OTg0NTJ9.r7Mo7C0qF9qZkaaVDAF8o-ZyjTzGmXM84erVarMQDz0",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{ \n    \"username\": \"mert\",\n    \"password\":\"12345\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/user/5",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"user",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get dwits",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"dwit\":\"\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get dwit/:id",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"dwit\":\"\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler/2",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post dwit",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"dwit\":\"Merhaba herkese\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete dwit",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"dwit\":\"\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler/5",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get comments",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQxIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1OTg1LCJleHAiOjE2ODE1NjIzODV9.hIsgvduW-t7CmXO9AXLpYZTLgbXqOZGDsPgRSAj51Qg",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"dwit_comment\":\"???\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler/2/comments",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler",
-						"2",
-						"comments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get comment/:id",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"dwit\":\"\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler/comments/2",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler",
-						"comments",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post comment",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQxIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1OTg1LCJleHAiOjE2ODE1NjIzODV9.hIsgvduW-t7CmXO9AXLpYZTLgbXqOZGDsPgRSAj51Qg",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"dwit_comment\":\"???\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler/2",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete comment",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQxIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1OTg1LCJleHAiOjE2ODE1NjIzODV9.hIsgvduW-t7CmXO9AXLpYZTLgbXqOZGDsPgRSAj51Qg",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "localhost:9001/api/dwitler/comments/5",
-					"host": [
-						"localhost"
-					],
-					"port": "9001",
-					"path": [
-						"api",
-						"dwitler",
-						"comments",
-						"5"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "92caf8d0-3a18-4c8d-9d47-53ea0857b8a3",
+    "name": "backendchallenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25705028"
+  },
+  "item": [
+    {
+      "name": "register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\":\"mert1233\",\n    \"password\":\"12345\",\n    \"email\":\"mrt123@gmail.com\",\n    \"rolename\":\"user\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/auth/register",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "auth", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\":\"Lionel Messi\",\n    \"password\":\"1234\"\n   \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/auth/login",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get users",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxMzk2NTU3LCJleHAiOjE2ODE0ODI5NTd9.G03gRsuioxZI8ed5UVIqZOcRV4V_PCrx8TG95CUHHDc",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "localhost:9001/api/user",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "user"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "put user",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1ODU2LCJleHAiOjE2ODE1NjIyNTZ9.PDfZdTU-JBWi83J_QUWhsMceu9rmCt5KA25VjehehfI",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n      \"username\": \"nusr_et\",\n      \"password\": \"12345\",\n      \"email\": \"nusret@gokce.com\",\n    \"role_id\":2\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/user/4",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "user", "4"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete user",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lcnQxMjMzIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NSwiaWF0IjoxNjgxNDEyMDUyLCJleHAiOjE2ODE0OTg0NTJ9.r7Mo7C0qF9qZkaaVDAF8o-ZyjTzGmXM84erVarMQDz0",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/user/5",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "user", "5"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get dwits",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"dwit\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get dwit/:id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"dwit\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler/2",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post dwit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"dwit\":\"Merhaba herkese\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete dwit",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler/5",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler", "5"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get comments",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQxIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1OTg1LCJleHAiOjE2ODE1NjIzODV9.hIsgvduW-t7CmXO9AXLpYZTLgbXqOZGDsPgRSAj51Qg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"dwit_comment\":\"???\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler/2/comments",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler", "2", "comments"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get comment/:id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQiLCJyb2xlbmFtZSI6ImFkbWluIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDIwMDIyLCJleHAiOjE2ODE1MDY0MjJ9.jr59W4KE5BWbfZ2zu2LCjM4P6qZD6Oy1imMUwPL7I3g",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"dwit\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler/comments/2",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler", "comments", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQxIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1OTg1LCJleHAiOjE2ODE1NjIzODV9.hIsgvduW-t7CmXO9AXLpYZTLgbXqOZGDsPgRSAj51Qg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"dwit_comment\":\"???\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler/2",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete comment",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im51c3JfZXQxIiwicm9sZW5hbWUiOiJ1c2VyIiwidXNlcl9pZCI6NCwiaWF0IjoxNjgxNDc1OTg1LCJleHAiOjE2ODE1NjIzODV9.hIsgvduW-t7CmXO9AXLpYZTLgbXqOZGDsPgRSAj51Qg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "localhost:9001/api/dwitler/comments/5",
+          "host": ["localhost"],
+          "port": "9001",
+          "path": ["api", "dwitler", "comments", "5"]
+        }
+      },
+      "response": []
+    }
+  ]
 }
