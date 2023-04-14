@@ -59,7 +59,7 @@ router.delete("/:id", dwitIdKontrol, async (req, res, next) => {
       await dwitModel.deleteDwit(req.params.id);
       res.json({ message: `${req.params.id} id'li dwit silindi` });
     } else {
-      res.json({ message: "bu twiti silmeye yetkiniz yok" });
+      res.status(401).json({ message: "bu twiti silmeye yetkiniz yok" });
     }
   } catch (error) {
     next(error);
@@ -73,7 +73,7 @@ router.delete("/comments/:id", commentIdKontrol, async (req, res, next) => {
       await dwitModel.deleteComment(req.params.id);
       res.json({ message: `${req.params.id} id'li comment silindi` });
     } else {
-      res.json({
+      res.status(401).json({
         message: ` bu commenti silmeye yetkiniz yok`,
       });
     }

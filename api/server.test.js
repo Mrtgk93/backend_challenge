@@ -183,7 +183,7 @@ describe("API END POINT TEST", () => {
     expect(res.status).toBe(401);
     expect(res.body.message).toBe("token gereklidir");
   }, 1000);
-  it("[18] dwitler'de token varken get isteği yapılınca doğru hata kodu ve mesaj geliyor mu ? /", async () => {
+  it("[18] dwitler'de token varken get isteği yapılınca dwit listesi geliyor mu ? /", async () => {
     let user = { username: "nusr_et", password: "1234" };
     const login = await supertest(server).post("/api/auth/login").send(user);
     let res = await supertest(server)
@@ -192,13 +192,94 @@ describe("API END POINT TEST", () => {
     expect(res.status).toBe(200);
     expect(res.body.length).toBe(4);
   }, 1000);
-  it("[19] dwitler'de token varken get isteği yapılınca doğru hata kodu ve mesaj geliyor mu ? /", async () => {
+  it("[19] dwitler'de token varken get isteği yapılınca dwitlere gelen commentler geliyor mu ? /", async () => {
     let user = { username: "nusr_et", password: "1234" };
     const login = await supertest(server).post("/api/auth/login").send(user);
     let res = await supertest(server)
-      .get("/api/dwitler")
+      .get("/api/dwitler/1/comments")
       .set("authorization", login.body.token);
     expect(res.status).toBe(200);
-    expect(res.body.length).toBe(4);
+    expect(res.body.comment.length).toBe(1);
+  }, 1000);
+  it("[20] dwitler'de token yokken get isteği yapılınca doğru hata kodu ve mesajı geliyor mu ? /", async () => {
+    let res = await supertest(server).get("/api/dwitler/1/comments");
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe("token gereklidir");
+  }, 1000);
+  it("[21] dwitler'de token varken dwit atmak için post isteği yapılınca username ve dwit geri dönüyormu ? /", async () => {
+    let user = { username: "nusr_et", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let dwit = { dwit: "bugün hava mükemmel" };
+    let res = await supertest(server)
+      .post("/api/dwitler")
+      .set("authorization", login.body.token)
+      .send(dwit);
+    expect(res.status).toBe(201);
+    expect(res.body).toMatchObject({
+      username: "nusr_et",
+      dwit: "bugün hava mükemmel",
+    });
+  }, 1000);
+  it("[22] dwitler'de token yokken dwit atmak için post isteği yapılınca doğru hata kodu ve mesajı geliyor mu ? /", async () => {
+    let user = { username: "nusr_et", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let dwit = { dwit: "bugün hava mükemmel" };
+    let res = await supertest(server).post("/api/dwitler").send(dwit);
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe("token gereklidir");
+  }, 1000);
+  it("[23] dwitler'de token varken dwit yazılmamışken post isteği yapılınca doğru hata kodu ve mesajı geliyor mu ? /", async () => {
+    let user = { username: "nusr_et", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let res = await supertest(server)
+      .post("/api/dwitler")
+      .set("authorization", login.body.token);
+    expect(res.status).toBe(400);
+    expect(res.body.message).toBe("dwit eksik");
+  }, 1000);
+  it("[24] dwitler'de token varken başkasının attığı bir dwite delete isteği atılınca doğru hata kodu ve mesaj geliyor mu ? /", async () => {
+    let user = { username: "nusr_et", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let res = await supertest(server)
+      .delete("/api/dwitler/1")
+      .set("authorization", login.body.token);
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe("bu twiti silmeye yetkiniz yok");
+  }, 1000);
+  it("[25] dwitler'de token varken dwit'e delete isteği atılınca doğru mesajı dönüyor mu? /", async () => {
+    let user = { username: "nusr_et", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let res = await supertest(server)
+      .delete("/api/dwitler/4")
+      .set("authorization", login.body.token);
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe("4 id'li dwit silindi");
+  }, 1000);
+  it("[26] dwitler'de token varken comment'e delete isteği atılınca doğru hata kodu ve mesajı dönüyor mu? /", async () => {
+    let user = { username: "nusr_et", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let res = await supertest(server)
+      .delete("/api/dwitler/comments/1")
+      .set("authorization", login.body.token);
+    expect(res.status).toBe(401);
+    expect(res.body.message).toBe(" bu commenti silmeye yetkiniz yok");
+  }, 1000);
+  it("[27] dwitler'de token varken olmayan bir comment'e delete isteği atılınca doğru hata kodu ve mesajı dönüyor mu? /", async () => {
+    let user = { username: "nusr_et", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let res = await supertest(server)
+      .delete("/api/dwitler/comments/4")
+      .set("authorization", login.body.token);
+    expect(res.status).toBe(404);
+    expect(res.body.message).toBe("comment bulunamadı");
+  }, 1000);
+  it("[28] dwitler'de token varken comment'e delete isteği atılınca doğru mesajı dönüyor mu? /", async () => {
+    let user = { username: "Lionel Messi", password: "1234" };
+    const login = await supertest(server).post("/api/auth/login").send(user);
+    let res = await supertest(server)
+      .delete("/api/dwitler/comments/2")
+      .set("authorization", login.body.token);
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe("2 id'li comment silindi");
   }, 1000);
 });
