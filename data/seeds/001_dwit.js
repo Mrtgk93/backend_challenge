@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-const defRoles = [{ rolename: "twitterBlue" }, { rolename: "user" }];
+const defRoles = [{ rolename: "admin" }, { rolename: "user" }];
 const defUsers = [
   {
     username: "Elon Musk",

@@ -41,9 +41,9 @@ router.put(
 router.delete(
   "/:id",
   userIdKontrol,
+  loginValidatePayload,
   usernameCheck,
   passwordCheck,
-  loginValidatePayload,
   async (req, res, next) => {
     try {
       if (req.decodeToken.user_id == req.params.id) {

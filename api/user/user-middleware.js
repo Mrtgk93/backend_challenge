@@ -44,15 +44,21 @@ const passwordCheck = async (req, res, next) => {
 const usernameCheck = async (req, res, next) => {
   try {
     let { username } = req.body;
-    const existUser = await userModel.getByFilter({ username: username });
-    if (!existUser) {
-      res.status(404).json({ message: "Böyle bir user yok" });
+    if (username == req.user.username) {
+      const existUser = await userModel.getByFilter({ username: username });
+      if (!existUser) {
+        res
+          .status(404)
+          .json({ message: "Sileceğiniz username'i doğru giriniz" });
+      } else {
+        req.user = existUser;
+        next();
+      }
     } else {
-      req.user = existUser;
-      next();
+      res.status(400).json({ message: "yanlış username girdiniz" });
     }
   } catch (error) {
-    next();
+    next(error);
   }
 };
 
