@@ -43,8 +43,8 @@ async function commentIdKontrol(req, res, next) {
 
 async function commentPayloadKontrol(req, res, next) {
   try {
-    let { dwit_comment, dwit_id } = req.body;
-    if (!dwit_comment || !dwit_id) {
+    let { dwit_comment } = req.body;
+    if (!dwit_comment) {
       res.status(400).json({ message: "eksik alanları kontrol ediniz" });
     } else {
       next();

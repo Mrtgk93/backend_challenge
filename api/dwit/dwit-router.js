@@ -12,6 +12,16 @@ router.get("/", async (req, res, next) => {
   res.json(allDwit);
 });
 
+router.get("/:id", dwitIdKontrol, async (req, res, next) => {
+  const dwit = await dwitModel.getDwitId(req.params.id);
+  res.json(dwit);
+});
+
+router.get("/comments/:id", commentIdKontrol, async (req, res, next) => {
+  const comment = await dwitModel.getCommentId(req.params.id);
+  res.json(comment);
+});
+
 router.get("/:id/comments", dwitIdKontrol, async (req, res, next) => {
   try {
     const dwit = await dwitModel.getDwitId(req.params.id);
@@ -43,7 +53,7 @@ router.post(
       const inserted = await dwitModel.createComent({
         dwit_comment: req.body.dwit_comment,
         user_id: req.decodeToken.user_id,
-        dwit_id: req.body.dwit_id,
+        dwit_id: req.params.id,
       });
       res.status(201).json(inserted);
     } catch (error) {
